@@ -42,7 +42,7 @@ app.get('/info',(req,res) => {
     });
 });
 
-app.post('/api/persons',(req,res) => {
+app.post('/api/persons',(req,res,next) => {
     const body = req.body;
     if(!body.name || !body.number) {
         return res.status('400').json({error: 'Content Missing'});
@@ -50,7 +50,8 @@ app.post('/api/persons',(req,res) => {
 
     const person = new Person({
         name:body.name,
-        number:body.number
+        number:body.number,
+        date: new Date()
     });
 
     person.save().then(result => {
@@ -60,7 +61,7 @@ app.post('/api/persons',(req,res) => {
     .catch(error => next(error));
 });
 
-app.put('/api/persons/:id',(req,res) => {
+app.put('/api/persons/:id',(req,res,next) => {
     const body = req.body;
 
     const person = {
