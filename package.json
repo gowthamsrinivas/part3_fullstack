@@ -8,15 +8,18 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../phonebook_frontend && npm run build --prod && cp -r build ../part3-rest",
-    "deploy": "git push heroku main",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",    
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "author": "Gowtham Srinivas",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.11.0",
+    "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
